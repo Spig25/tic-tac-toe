@@ -9,5 +9,12 @@
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3, 200px);
     place-content: center;
-    place-items: center;
+}
+
+.container>div {
+    border: 1px solid black;
+    /* display: grid; */
+    /* place-content: center; */
+    height: 100%;
+    width: 100%;
 }
