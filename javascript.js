@@ -1,5 +1,6 @@
 const container = document.querySelector(`.container`)
-const info = document.querySelector(`.info`)
+const gamestate = document.querySelector(`.gamestate`)
+const scoreDisplay = document.querySelector(`.score`)
 const start = document.querySelector(`.start`)
 
 const personFactory = (name, symbol, score) => {
@@ -18,7 +19,8 @@ const gameboard = (() => {
     const array = [``, ``, ``, ``, ``, ``, ``, ``, ``]
     const drawBoard = () => {
         container.innerHTML = ``
-        info.textContent = `${activePlayer.name}'s (${activePlayer.symbol}) turn!`
+        gamestate.textContent = `${activePlayer.name}'s (${activePlayer.symbol}) turn!`
+        scoreDisplay.textContent = `${playerOne.name} score: ${playerOne.score} | ${playerTwo.name} score: ${playerTwo.score}`
 
         gameboard.array.forEach((e, index) => {
             const box = document.createElement(`button`)
@@ -60,24 +62,25 @@ const game = (() => {
         arr.forEach((subArr) => {
             // Uses every number (0,1,2 ... 3,4,5 ... 6,7,8) inside of the arrays (subArr) of winCombo as indexes for gameboard.array (i.e. checks gameboard.array index 0, 1 and 2 to see if they all contain either an X or a O)
             if (subArr.every(element => gameboard.array[element] === playerOne.symbol)) {
-                console.log(`player 1 wins`)
                 game.disableButtons()
                 logWin = true
                 playerOne.score++
                 console.log(playerOne.score)
+                gamestate.textContent = `Player 1 wins! Congrats!`
             }
             if (subArr.every(element => gameboard.array[element] === playerTwo.symbol)) {
-                console.log(`player 2 wins`)
                 game.disableButtons()
                 logWin = true
                 playerTwo.score++
                 console.log(playerTwo.score)
+                gamestate.textContent = `Player 2 wins! Congrats!`
             }
         })
         // If nobody has won the round we run tieGame to check if theres a tie. We use the checker so we dont run the tieGame function potentially when someone wins and declare a tie instead of a win
         if (logWin !== true) {
             game.tieGame()
         }
+        scoreDisplay.textContent = `${playerOne.name} score: ${playerOne.score} | ${playerTwo.name} score: ${playerTwo.score}`
     }
     const disableButtons = () => {
         const buttons = container.querySelectorAll(`.box`)

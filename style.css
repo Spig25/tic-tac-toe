@@ -15,8 +15,10 @@ body {
     margin-top: 20px;
 }
 
-.info {
-    place-self: center;
+.info-container {
+    place-items: center;
+    display: grid;
+    gap: 10px;
 }
 
 .container {
