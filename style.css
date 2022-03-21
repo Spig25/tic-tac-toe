@@ -5,7 +5,14 @@
 
 body {
     display: grid;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: auto auto 1fr;
+    gap: 20px;
+}
+
+.start {
+    place-self: center;
+    padding: 8px 24px;
+    margin-top: 20px;
 }
 
 .info {
