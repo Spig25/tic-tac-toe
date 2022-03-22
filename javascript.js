@@ -19,8 +19,7 @@ const gameboard = (() => {
     const array = [``, ``, ``, ``, ``, ``, ``, ``, ``]
     const drawBoard = () => {
         container.innerHTML = ``
-        gamestate.textContent = `${activePlayer.name}'s (${activePlayer.symbol}) turn!`
-        scoreDisplay.textContent = `${playerOne.name} score: ${playerOne.score} | ${playerTwo.name} score: ${playerTwo.score}`
+        
 
         gameboard.array.forEach((e, index) => {
             const box = document.createElement(`button`)
@@ -95,10 +94,14 @@ const game = (() => {
         })
     }
     const startNewGame = () => {
+        // Empty the array
         gameboard.array = [``, ``, ``, ``, ``, ``, ``, ``, ``]
+        // Set turn to player ones turn
         activePlayer = playerOne
         gameboard.drawBoard()
         game.enableButtons()
+        gamestate.textContent = `${activePlayer.name}'s (${activePlayer.symbol}) turn!`
+        scoreDisplay.textContent = `${playerOne.name} score: ${playerOne.score} | ${playerTwo.name} score: ${playerTwo.score}`
     }
     const tieGame = () => {
         if (gameboard.array.includes(``)) {
@@ -107,6 +110,8 @@ const game = (() => {
         }
         else {
             console.log(`tie`)
+            gamestate.textContent = `Tie game!`
+            game.disableButtons()
         }
     }
 
