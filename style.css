@@ -24,8 +24,8 @@ body {
 .container {
     /* height: 100vh; */
     display: grid;
-    grid-template-columns: repeat(3, 150px);
-    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(3, minmax(50px, 150px));
+    grid-template-rows: repeat(3, minmax(50px, 150px));
     place-content: center;
 }
 
@@ -35,5 +35,5 @@ body {
     /* place-content: center; */
     /* height: 100%;
     width: 100%; */
-    font-size: 7rem;
+    font-size: min(40vw, 7rem);
 }

@@ -20,7 +20,6 @@ const gameboard = (() => {
     const drawBoard = () => {
         container.innerHTML = ``
         
-
         gameboard.array.forEach((e, index) => {
             const box = document.createElement(`button`)
             box.setAttribute(`data-index`, index)
@@ -31,6 +30,7 @@ const gameboard = (() => {
     }
     const toggleBox = (event) => {
         const index = event.target.getAttribute(`data-index`)
+
         gameboard.array.splice(index, 1, activePlayer.symbol)
         if (activePlayer === playerOne) {
             activePlayer = playerTwo
@@ -41,8 +41,8 @@ const gameboard = (() => {
         else {
             return
         }
+        
         gameboard.drawBoard()
-
     }
 
     return {
@@ -52,6 +52,7 @@ const gameboard = (() => {
     }
 })()
 gameboard.drawBoard()
+
 
 const game = (() => {
     const winCombo = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
@@ -105,11 +106,9 @@ const game = (() => {
     }
     const tieGame = () => {
         if (gameboard.array.includes(``)) {
-            console.log(`not a tie`)
             return
         }
         else {
-            console.log(`tie`)
             gamestate.textContent = `Tie game!`
             game.disableButtons()
         }
@@ -125,6 +124,7 @@ const game = (() => {
     }
 })()
 game.disableButtons()
+
 
 start.addEventListener(`click`, () => {
     game.startNewGame()
