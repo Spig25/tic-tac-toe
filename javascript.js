@@ -39,7 +39,7 @@ const gameboard = (() => {
     } else {
       return;
     }
-
+    gamestate.textContent = `${activePlayer.name}'s (${activePlayer.symbol}) turn!`;
     gameboard.drawBoard();
   };
 
